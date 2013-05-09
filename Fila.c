@@ -3,9 +3,9 @@
 #include <string.h>
 #include "Fila.h"
 #include <time.h>
-/* Função para Gerar as fichas dos cliente baseada em 2 variaveis globais
-   onde são chamadas, atualizadas e atribuida ao cliente */
-int FichaComumAtual = 0, FichaPrioritariaAtual = 0; // Variaveis Das Fichas
+
+int FichaComumAtual = 0, FichaPrioritariaAtual = 0; 
+
 int GerarFichas(char Prioridade_) {
     if(Prioridade_ == 'C') {
         FichaComumAtual++;
@@ -16,23 +16,22 @@ int GerarFichas(char Prioridade_) {
     }
 }
 
-//Cria Fila e incrementa um contador "tamanho" para controle
 void CriarFila(tipoFila *Fila_) {
     Fila_ -> inicio = Fila_ -> final = NULL;
     Fila_ -> tamanho = 0;
 }
 
-//Verifica se a Fila está vazia
+
 int FilaVazia(tipoFila Fila_) {
     return(Fila_.inicio == NULL && Fila_.final == NULL);
 }
 
-//Adiciona novo cliente na fila de espera de acordo com sua Prioridade
+
 int InserirCliente(tipoFila *Fila_, char Nome_[], char Prioridade_) {
     tno *novoCliente;
     novoCliente = (tno*) malloc(sizeof(tno));
 
-    if(novoCliente == NULL) return 0; /* Erro: mem¢ria insuficiente */
+    if(novoCliente == NULL) return 0; 
 
     novoCliente -> NumeroFicha = GerarFichas(Prioridade_);
     strcpy(novoCliente -> NomeCliente, Nome_);
@@ -52,7 +51,6 @@ int InserirCliente(tipoFila *Fila_, char Nome_[], char Prioridade_) {
     return 1;
 }
 
-//Exibe os clientes da fila baseado no tamanho da fila guardado em "tamanho"
 void ExibirFila(tipoFila *Fila_, char Prioridade_) {
     tno *atual= Fila_->inicio;
     int i;
@@ -70,10 +68,10 @@ void ExibirFila(tipoFila *Fila_, char Prioridade_) {
     }
 }
 
-//Remove Cliente da Fila de Espera para seu atendimento
+
 void AtenderCliente(tipoFila *Fila_) {
     GravarLogRemover(Fila_);
-    tno *auxiliar; // ponteiro para auxiliar a remoção do cliente na fila
+    tno *auxiliar; 
 
     if(Fila_ -> inicio == Fila_ -> final) Fila_ -> final = NULL;
     auxiliar = Fila_ -> inicio;
@@ -82,7 +80,7 @@ void AtenderCliente(tipoFila *Fila_) {
     Fila_->tamanho--;
 }
 
-//Registra a entrada do cliente
+
 int GravarLog(tipoFila *Fila_, char Mensagem_[]) {
     tno *atual = Fila_ -> inicio;
 
@@ -111,7 +109,7 @@ int GravarLog(tipoFila *Fila_, char Mensagem_[]) {
 return 0;
 }
 
-//Registra a saida do cliente
+
 int GravarLogRemover(tipoFila *Fila_) {
     tno *atual = Fila_ -> inicio;
 
