@@ -5,7 +5,7 @@ typedef int TipoElemento;
 
 typedef struct noo{
     TipoElemento Valor;
-    struct noo* Proximo; /* Ponteiro para o próximo nó */
+    struct noo* Proximo; 
 }noGuiche;
 
 typedef noGuiche* tipoGuiche;

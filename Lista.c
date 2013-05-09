@@ -4,12 +4,12 @@
 #include "Lista.h"
 #include<time.h>
 
-//Cria a lista de guiches
+
 void CriarGuiche(tipoGuiche *ListaGuiches_) {
     *ListaGuiches_ = NULL;
 }
 
- // Grava o log do estado do guiche
+
 int GravarLog(tipoGuiche Guiche_, char Mensagem_[], int quantidade) {
     
     FILE *log;
@@ -40,13 +40,13 @@ return 0;
 
 
 
-//Adiciona um novo guiche de acordo com seu tipo o deixando pronto para atendimento
+
 int InserirGuiche(tipoGuiche *Guiche, TipoElemento NumeroGuiche) {
     tipoGuiche atual_, anterior_, novo_;
 
     novo_ = (tipoGuiche) malloc(sizeof(noGuiche));
 
-    if(novo_ == NULL) return 0; // Memória insuficiente !
+    if(novo_ == NULL) return 0; 
 
     novo_->Valor = NumeroGuiche;
     novo_->Proximo = NULL;
@@ -54,7 +54,7 @@ int InserirGuiche(tipoGuiche *Guiche, TipoElemento NumeroGuiche) {
     atual_ = *Guiche;
 
     while(atual_ != NULL && NumeroGuiche >= atual_ -> Valor) {
-        if(atual_ -> Valor == NumeroGuiche) return 0; /* Valor já existente ! */
+        if(atual_ -> Valor == NumeroGuiche) return 0; 
 
         anterior_ = atual_;
         atual_ = atual_ -> Proximo;
@@ -71,7 +71,7 @@ int InserirGuiche(tipoGuiche *Guiche, TipoElemento NumeroGuiche) {
     return 1;
 }
 
-//Insere Guiches em Massa
+
 void InserirEmQuantidade(tipoGuiche* Guiche_, int Quantidade_, char Tipo_) {
     int i;
 
@@ -88,7 +88,7 @@ void InserirEmQuantidade(tipoGuiche* Guiche_, int Quantidade_, char Tipo_) {
     }
 }
 
-//Esxibe a Lista de Guiches
+
 void ExibirGuiches(tipoGuiche Guiche_, char Tipo_) {
     if(Tipo_ == 'C') {
         while(Guiche_ != NULL) {
@@ -107,7 +107,7 @@ void ExibirGuiches(tipoGuiche Guiche_, char Tipo_) {
     }
 }
 
-//Remove Guiche apartir de seu número 
+
 int RemoverGuiche(tipoGuiche *Guiche_, int posicao_) {
     tipoGuiche anterior_, proximo_;
     int iterador = 1;
@@ -120,7 +120,7 @@ int RemoverGuiche(tipoGuiche *Guiche_, int posicao_) {
         iterador++;
     }
 
-    if(proximo_ == NULL) return 0; /* Posição inválida */
+    if(proximo_ == NULL) return 0; 
 
     if(posicao_ == 1) {
         *Guiche_ = proximo_ -> Proximo;

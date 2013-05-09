@@ -5,8 +5,6 @@
 #include<time.h>
 
 
-/*               MAIN                 */
-
 int main(){
 
     tipoGuiche guicheComum, guichePrioritario;
@@ -16,9 +14,6 @@ int main(){
 
 
 
-
-   
-   /* Criação automatica dos Guiches e Filas*/
     CriarGuiche(&guicheComum);
     CriarGuiche(&guichePrioritario);
 
